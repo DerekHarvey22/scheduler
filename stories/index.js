@@ -9,7 +9,7 @@ import DayList from 'components/DayList';
 import InterviewerList from "components/InterviewerList"
 import InterviewerListItem from 'components/InterviewerListItem';
 import Appointment from "components/Appointment/index.js";
-import Header from "components/Appointment/Header";
+import Header from "components/Appointment/header.js";
 
 storiesOf("Button", module)
   .addParameters({
