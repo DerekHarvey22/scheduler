@@ -16,6 +16,9 @@ import Confirm from "components/Appointment/Confirm.js";
 import Status from "components/Appointment/Status.js";
 import Error from "components/Appointment/Error.js";
 import Form from "../src/components/Appointment/Form.js"
+import { Fragment } from 'react'
+
+
 storiesOf("Button", module)
   .addParameters({
     backgrounds: [{ name: "dark", value: "#222f3e", default: true }]
@@ -185,6 +188,24 @@ storiesOf("Button", module)
         onSave={action("onSave")}
         onCancel={action("onCancel")}
       />
+    ))
+
+    .add("Appointment Empty", () => (
+      <Fragment>
+        <Appointment id={1} time="4pm" />
+        <Appointment time="5pm" />
+      </Fragment>
+    ))
+
+    .add("Appointment Booked", () => (
+      <Fragment>
+        <Appointment
+          id={1}
+          time="4pm"
+          interview={{ student: "Lydia Miller-Jones", interviewer }}
+        />
+        <Appointment time="5pm" />
+      </Fragment>
     ))
 
 
