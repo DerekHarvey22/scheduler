@@ -21,3 +21,18 @@ export function getInterviewForDay(state, interview) {
 
   return result;
 }
+
+export function getInterviewersForDay(state, day) {
+
+  let d = state.days.find((item) => item.name === day);
+
+  if (!d) {
+    return [];
+  }
+  const results = d.appointments.map(
+    (appointment) => state.appointments[appointment]
+  );
+
+  return results;
+}
+
