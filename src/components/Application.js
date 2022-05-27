@@ -31,6 +31,30 @@ export default function Application(props) {
       })
       .catch((err) => console.error(err));
   });
+
+
+  function bookInterview(id, interview) {
+    console.log(id, interview);
+    const appointment = {
+      ...state.appointments[id],
+      interview: { ...interview },
+    };
+    const appointments = {
+      ...state.appointments,
+      [id]: appointment,
+    };
+    axios.put(`/api/appointments/${id}`, appointments)
+    .then((response) => {
+      setState({
+        ...state,
+        appointments,
+      });
+
+      console.log(response);
+    })
+    .catch((err) => console.log(err));
+  
+  }
   
   const appointments = getAppointmentsForDay(state, state.day);
   const interviewers = getInterviewersForDay(state, state.day);
@@ -44,6 +68,7 @@ const arrayAppointments = appointments.map((appointment) => {
       time={appointment.time}
       interview={interview}
       interviewers={interviewers}
+      bookInterview={bookInterview}
     />
   );
 });
