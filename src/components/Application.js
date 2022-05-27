@@ -32,6 +32,15 @@ export default function Application(props) {
       .catch((err) => console.error(err));
   });
 
+  function deleteInterview(id) {
+    return axios.delete(`/api/appointments/${id}`).then((response) => {
+      setState({
+        ...state,
+        appointments,
+      });
+    });
+  }
+
 
   function bookInterview(id, interview) {
     console.log(id, interview);
@@ -69,6 +78,7 @@ const arrayAppointments = appointments.map((appointment) => {
       interview={interview}
       interviewers={interviewers}
       bookInterview={bookInterview}
+      deleteInterview={deleteInterview}
     />
   );
 });
