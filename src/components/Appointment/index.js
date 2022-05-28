@@ -34,7 +34,8 @@ function save(name, interviewer) {
   console.log("mode : ", mode);
     transition(SAVING);
   props.bookInterview(props.id, interview)
-  .then(transition(SHOW))
+  
+  .then(()=>transition(SHOW))
   .catch((error) => transition(ERROR_SAVE));
 }
 function deleteInterview() {
@@ -47,7 +48,7 @@ function editInterview() {
   console.log("logging props from SHOW: ", props);
             transition(EDIT);
 }
-
+console.log("propstest ", props)
 
   return (
 <article className="appointment">
@@ -68,6 +69,7 @@ function editInterview() {
 {mode === EDIT && (
         <Form
         {...props.interview}
+        interviewer={props.interview.interviewer.id}
         interviewers={props.interviewers}
         onEdit={editInterview}
         onCancel={() => back()}
