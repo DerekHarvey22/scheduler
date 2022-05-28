@@ -55,14 +55,14 @@ export default function Application() {
       ...state.appointments,
       [id]: appointment,
     };
-    return axios.put(`/api/appointments/${id}`, appointments)
+    return axios.put(`/api/appointments/${id}`, {interview})
     .then((response) => {
       setState({
         ...state,
         appointments,
       });
 
-      console.log(response);
+      console.log(response, "test");
     })
     .catch((err) => console.log(err));
   

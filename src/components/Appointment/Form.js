@@ -11,6 +11,7 @@ export default function Form(props) {
   const clear = function () {
     setStudent("");
     setInterviewer(null);
+    props.onCancel();
   };
   return (
     <main className="appointment__card appointment__card--create">
