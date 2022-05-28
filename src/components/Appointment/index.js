@@ -24,7 +24,8 @@ const DELETING = "DELETING";
   const { mode, transition, back } = useVisualMode(
   props.interview ? SHOW : EMPTY
 );
-
+console.log(props)
+console.log(props.interviewers)
 function save(name, interviewer) {
   const interview = {
     student: name,
@@ -34,13 +35,13 @@ function save(name, interviewer) {
     transition(SAVING);
   props.bookInterview(props.id, interview)
   .then(transition(SHOW))
-  .catch((error) => transition(ERROR_SAVE, true));
+  .catch((error) => transition(ERROR_SAVE));
 }
 function deleteInterview() {
   transition(DELETING);
-  deleteInterview(props.id)
+  props.deleteInterview(props.id)
     .then(() => transition(EMPTY))
-    .catch((error) => transition(ERROR_DELETE, true));
+    .catch((error) => transition(ERROR_DELETE));
 }
 function editInterview() {
   transition(EDIT);
@@ -55,6 +56,7 @@ function editInterview() {
       <Show
         {...props.interview}
         onDelete={() => transition(CONFIRM)}
+        onEdit={() => transition(EDIT)}
       />
     )}
     {mode === CREATE && (
