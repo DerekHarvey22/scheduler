@@ -96,6 +96,7 @@ storiesOf("Button", module)
         />
       ))
       .add("Selected", () => (
+
         <InterviewerList
           interviewers={interviewers}
           interviewer={3}
@@ -192,7 +193,7 @@ storiesOf("Button", module)
 
     .add("Appointment Empty", () => (
       <Fragment>
-        <Appointment id={1} time="4pm" />
+        <Appointment id={1} time="4pm" interviewers={interviewers}/>
         <Appointment time="5pm" />
       </Fragment>
     ))
@@ -200,6 +201,7 @@ storiesOf("Button", module)
     .add("Appointment Booked", () => (
       <Fragment>
         <Appointment
+        interviewers={interviewers}
           id={1}
           time="4pm"
           interview={{ student: "Lydia Miller-Jones", interviewer }}
