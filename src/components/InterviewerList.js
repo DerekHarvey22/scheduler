@@ -4,9 +4,9 @@ import "./InterviewerList.scss";
 
 const InterviewerList = (props) => {
   console.log(props)
-  const {interviewers, value, setInterviewer } = props;
+  const { interviewers, value, setInterviewer } = props;
   const eachInterviewer = interviewers.map((interviewer) => {
-    return(
+    return (
       <InterviewerListItem
         key={interviewer.id}
         id={interviewer.id}
@@ -14,9 +14,9 @@ const InterviewerList = (props) => {
         avatar={interviewer.avatar}
         selected={interviewer.id === value}
         setInterviewer={() => setInterviewer(interviewer.id)}
-      />   
+      />
     )
-  })  
+  })
   return (
     <section className="interviewers">
       <h4 className="interviewers__header text--light">
