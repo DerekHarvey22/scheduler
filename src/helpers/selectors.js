@@ -29,8 +29,8 @@ export function getInterviewersForDay(state, day) {
   if (!d) {
     return [];
   }
-  const results = d.appointments.map(
-    (appointment) => state.appointments[appointment]
+  const results = d.interviewers.map(
+    (interviewerID) => state.interviewers[interviewerID]
   );
 
   return results;

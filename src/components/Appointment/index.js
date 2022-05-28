@@ -44,7 +44,8 @@ function deleteInterview() {
     .catch((error) => transition(ERROR_DELETE));
 }
 function editInterview() {
-  transition(EDIT);
+  console.log("logging props from SHOW: ", props);
+            transition(EDIT);
 }
 
 
@@ -66,13 +67,11 @@ function editInterview() {
 
 {mode === EDIT && (
         <Form
-          student={props.interview.student}
-          interviewer={props.interview.interviewer.id}
-          interviewers={props.interviewers}
-          onCancel={back}
-          onSave={save}
-          onDelete={() => transition(CONFIRM)}
-          onEdit={editInterview}
+        {...props.interview}
+        interviewers={props.interviewers}
+        onEdit={editInterview}
+        onCancel={() => back()}
+        onSave={save}
         />
       )}
       {mode === SAVING && <Status message={"Saving"} />}
