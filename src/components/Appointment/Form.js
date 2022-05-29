@@ -7,12 +7,19 @@ import { useState } from "react";
 export default function Form(props) {
   const [student, setStudent] = useState(props.student || "");
   const [interviewer, setInterviewer] = useState(props.interviewer || null);
+  const [error, setError] = useState("");
 
-  const validate = function () {
-    if (!student || !interviewer) {
-      return
+  const validate = () => {
+    if (!student) {
+      setError("Student name cannot be blank");
+      return;
     }
-    props.onSave(student, interviewer)
+    if (!interviewer) {
+      setError("Please select an interviewer");
+      return;
+    }
+    setError("");
+    props.onSave(student, interviewer);
   }
 
   const clear = function () {
@@ -30,11 +37,14 @@ export default function Form(props) {
           placeholder="Enter Student Name"
           onChange={(event) => { setStudent(event.target.value) }}
           value={student}
+          data-testid="student-name-input"
         /*
           This must be a controlled component
           your code goes here
         */
         />
+          <section className="appointment__validation">{error}</section>
+
         </form>
         <InterviewerList
           interviewers={props.interviewers}
