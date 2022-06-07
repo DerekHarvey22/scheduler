@@ -20,10 +20,11 @@ const InterviewerList = (props) => {
   })
   return (
     <section className="interviewers">
-      <h4 className="interviewers__header text--light">
+
+      <ul className="interviewers__list">
         {eachInterviewer}
-      </h4>
-      <ul className="interviewers__list"></ul>
+
+      </ul>
     </section>
   );
 

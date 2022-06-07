@@ -50,6 +50,14 @@ export default function Appointment(props) {
   }
   //console.log("propstest ", props)
 
+  function closeError() {
+    transition(SHOW)
+  }
+
+  function createCloseError() {
+    transition(props.interview ? SHOW : EMPTY)
+  }
+
   return (
     <article className="appointment">
       < Header time={props.time} />
@@ -78,11 +86,11 @@ export default function Appointment(props) {
       )}
       {mode === SAVING && <Status message={"Saving"} />}
       {mode === ERROR_SAVE && (
-        <Error message={"Denied"} onClose={back} />
+        <Error message={"Denied"} onClose={createCloseError} />
       )}
       {mode === DELETING && <Status message={"Deleting"} />}
       {mode === ERROR_DELETE && (
-        <Error message={"Denied."} onClose={back} />
+        <Error message={"Denied."} onClose={closeError} />
       )}
       {mode === CONFIRM && (
         <Confirm

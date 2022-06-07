@@ -120,7 +120,7 @@ export default function Application() {
           days
         })
       })
-      .catch((err) => console.log(err));
+    //.catch((err) => console.log(err));
 
   }
   const setDay = (day) => setState({ ...state, day });
