@@ -12,6 +12,7 @@ import Error from "./Error";
 
 
 export default function Appointment(props) {
+  //some consts
   const EMPTY = "EMPTY";
   const SHOW = "SHOW";
   const CREATE = "CREATE";
@@ -38,6 +39,7 @@ export default function Appointment(props) {
       .then(() => transition(SHOW))
       .catch((error) => transition(ERROR_SAVE));
   }
+  //Function for deleting interviews
   function deleteInterview() {
     transition(DELETING);
     props.deleteInterview(props.id)
