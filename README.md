@@ -1,7 +1,7 @@
 # Interview Scheduler
 
 
-!["Appointment booking and editing feature"](https://github.com/DerekHarvey22/scheduler/blob/master/docs/AppointmentBookingEditing.png?raw=true)
+!["Appointment booking and editing feature"](https://github.com/DerekHarvey22/scheduler/blob/master/docs/CreateAppt.png?raw=true)
 
 !["Appointment booking and editing feature"](https://github.com/DerekHarvey22/scheduler/blob/master/docs/Scheduler.png?raw=true)
 
