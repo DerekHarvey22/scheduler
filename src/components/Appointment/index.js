@@ -41,10 +41,10 @@ export default function Appointment(props) {
   }
   //Function for deleting interviews
   function deleteInterview() {
-    transition(DELETING);
+    transition(DELETING, true);
     props.deleteInterview(props.id)
       .then(() => transition(EMPTY))
-      .catch((error) => transition(ERROR_DELETE));
+      .catch((error) => transition(ERROR_DELETE, true));
   }
   function editInterview() {
     console.log("logging props from SHOW: ", props);
@@ -52,13 +52,13 @@ export default function Appointment(props) {
   }
   //console.log("propstest ", props)
 
-  function closeError() {
-    transition(SHOW)
-  }
+  // function closeError() {
+  //   transition(SHOW)
+  // }
 
-  function createCloseError() {
-    transition(props.interview ? SHOW : EMPTY)
-  }
+  // function createCloseError() {
+  //   transition(props.interview ? SHOW : EMPTY)
+  // }
 
   return (
     <article className="appointment">
@@ -88,11 +88,11 @@ export default function Appointment(props) {
       )}
       {mode === SAVING && <Status message={"Saving"} />}
       {mode === ERROR_SAVE && (
-        <Error message={"Denied"} onClose={createCloseError} />
+        <Error message={"Denied"} onClose={back} />
       )}
       {mode === DELETING && <Status message={"Deleting"} />}
       {mode === ERROR_DELETE && (
-        <Error message={"Denied."} onClose={closeError} />
+        <Error message={"Denied."} onClose={back} />
       )}
       {mode === CONFIRM && (
         <Confirm
